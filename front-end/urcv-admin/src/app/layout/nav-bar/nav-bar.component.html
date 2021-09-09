@@ -1,0 +1,149 @@
+<div class="header-top-w3layouts">
+  <div class="container">
+    <div class="col-md-6 logo-w3">
+      <a href="index.html"><img src="https://zeejprint.com/website/custom/images/header-images/zeejlogo.png" alt=" " />
+        <h1>ZEEJPRINT<span></span></h1>
+      </a>
+    </div>
+    <div class="col-md-6 phone-w3l">
+      <ul>
+        <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
+        &nbsp;&nbsp;
+
+        <li>+966114097500</li>
+        &nbsp;&nbsp;
+        <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
+        &nbsp;&nbsp;
+
+        <li>+97145547642</li>
+        &nbsp;&nbsp; &nbsp;&nbsp;
+
+
+        <li><span class="glyphicon  glyphicon-user " aria-hidden="true"></span></li>
+        &nbsp;&nbsp;
+
+        <li>ksa@zeejprint.com</li>
+        &nbsp;&nbsp; &nbsp;&nbsp;
+
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="header-bottom-w3ls">
+  <div class="container">
+    <div class="col-md-7 navigation-agileits">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header nav_2">
+          <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+            data-target="#bs-megadropdown-tabs">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+          <ul class="nav navbar-nav ">
+            <li [routerLinkActive]="['active']">
+              <a [routerLink]="['pages/home']" class="hyper ">
+                <span>Home</span>
+              </a>
+            </li>
+            <li routerLinkActive='active' class="dropdown">
+              <a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Our Prodacts<b
+                    class="caret"></b></span></a>
+              <ul class="dropdown-menu multi">
+                <div class="row ">
+                  <div class="col-sm-4" *ngFor="let categ of categroies">
+                    <ul class="multi-column-dropdown">
+                      <li><a style="cursor: pointer;" (click)="subCategory(categ._id)"><i
+                            class="fa fa-angle-down"></i>{{categ.title_en }}</a></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="row bac">
+                  <div class="col-sm-4 w3l" *ngFor="let subCateg of subcategroies">
+                    <li><a routerLink="/prodacts/category/{{subCateg._id}}" href=""><i class="fa fa-angle-right"
+                          aria-hidden="true"></i> {{subCateg.title_en}}
+                      </a></li>
+
+                  </div>
+                </div>
+
+              </ul>
+            </li>
+            <li [routerLinkActive]="['active']"><a [routerLink]="['pages/about']" class="hyper"><span>About</span></a>
+            </li>
+            <li [routerLinkActive]="['active']"><a [routerLink]="['pages/contact']" class="hyper"><span>Contact
+                  Us</span></a></li>
+            <li *ngIf="!auth.getToken()" [routerLinkActive]="['active']"><a [routerLink]="['auth/register']"
+                class="hyper"><span>Register</span></a></li>
+            <li *ngIf="!auth.getToken()" [routerLinkActive]="['active']"><a [routerLink]="['auth/login']"
+                class="hyper"><span>Login</span></a>
+            </li>
+            <li *ngIf="auth.getToken()" [routerLinkActive]="['active']" class="dropdown">
+              <a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Information<b
+                    class="caret"></b></span></a>
+              <ul class="dropdown-menu multi">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <ul class="multi-column-dropdown text-center">
+
+                      <li><a [routerLink]="['user']"><i class="fa fa-angle-right" aria-hidden="true"></i>My Profile</a>
+                      </li>
+                    </ul>
+                    <ul class="multi-column-dropdown text-center">
+
+                      <li><a [routerLink]="['/user/setting']" href="men.html"><i class="fa fa-angle-right"
+                            aria-hidden="true"></i>Setting</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="clearfix"></div>
+                </div>
+
+              </ul>
+            </li>
+            <li *ngIf="auth.getToken()" (click)="auth.removToken()" style="cursor: pointer;"
+              [routerLinkActive]="['active']"><a class="hyper"><span>Logout</span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".dropdown").hover(
+          function () {
+            $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+            $(this).toggleClass('open');
+          },
+          function () {
+            $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+            $(this).toggleClass('open');
+          }
+        );
+      });
+    </script>
+    <div class="col-md-4 search-agileinfo">
+      <!-- <form action="#" method="post">
+        <input type="search" name="Search" placeholder="Search for a Product..." required="">
+        <button type="submit" class="btn btn-default search" aria-label="Left Align">
+          <i class="fa fa-search" aria-hidden="true"> </i>
+        </button>
+      </form> -->
+    </div>
+    <div class="col-md-1 cart-wthree">
+      <div class="cart">
+        <form action="#" method="post" class="last">
+          <input type="hidden" name="cmd" value="_cart" />
+          <input type="hidden" name="display" value="1" />
+          <a routerLink="/user/my-orders" class="w3view-cart" type="submit" name="submit" value=""><i
+              class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+        </form>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
